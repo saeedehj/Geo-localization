@@ -20,6 +20,7 @@ import datasets_ws
 from model import network
 from model.sync_batchnorm import convert_model
 from model.functional import sare_ind, sare_joint
+from model.gan import generator
 
 #### Initial setup: parser, logging...
 args= parser.parse_arguments()
@@ -33,6 +34,9 @@ logging.info(f"Using {torch.cuda.device_count()} GPUs and {multiprocessing.cpu_c
 
 #### Creation of Datasets
 logging.debug(f"Loading dataset {args.dataset_name} from folder {args.datasets_folder}")
+
+
+generator.gan()
 
 triplets_ds = datasets_ws.TripletsDataset(args, args.datasets_folder, args.dataset_name, "train", args.negs_num_per_query)
 logging.info(f"Train query set: {triplets_ds}")
