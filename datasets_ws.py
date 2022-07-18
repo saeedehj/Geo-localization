@@ -154,7 +154,7 @@ class BaseDatasetGan(data.Dataset):
         
         #### Read paths and UTM coordinates for all images.
         database_folder = join(self.dataset_folder, "database")
-        queries_folder  = join(self.dataset_folder, "queriesGan")
+        queries_folder  = join(self.dataset_folder, "queriesGan/day2night_pretrained/test_latest/images")
         if not os.path.exists(database_folder): raise FileNotFoundError(f"Folder {database_folder} does not exist")
         if not os.path.exists(queries_folder) : raise FileNotFoundError(f"Folder {queries_folder} does not exist")
         self.database_paths = sorted(glob(join(database_folder, "**", "*.jpg"), recursive=True))
